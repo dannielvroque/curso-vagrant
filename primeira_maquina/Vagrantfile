@@ -5,11 +5,8 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8090
   # placa de rede publica
   config.vm.network "public_network", ip:"192.168.1.55" 
-  # Script de provisionamento
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install -y nginx
-    sudo systemctl enable nginx
-    sudo systemctl start nginx
-  SHELL
+  # Script externo
+  config.vm.provision "shell", path: "nginx-install.sh"
+  # sincronizando folders com a maquina remota
+  config.vm.synced_folder "site/", "/var/www/html"
 end
