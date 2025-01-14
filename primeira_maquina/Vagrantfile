@@ -1,4 +1,9 @@
 Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |v|
+    v.name = "vm_teste_danniel"
+    v.memory = 1024
+    v.cpus = 2
+  end
   # imagem usada
   config.vm.box = "hashicorp/bionic64"
   # configuracao de porta para o localhost
@@ -9,4 +14,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "nginx-install.sh"
   # sincronizando folders com a maquina remota
   config.vm.synced_folder "site/", "/var/www/html"
+  #
+  # Run Ansible from the Vagrant Host - Estudar e fazer projetos disso
+  #
+  # config.vm.provision "ansible" do |ansible|
+  #   ansible.playbook = "playbook.yml"
+  # end
 end
