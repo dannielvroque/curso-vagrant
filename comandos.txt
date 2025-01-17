@@ -1,0 +1,10 @@
+comandos vagrant
+	vagrant init hashicorp/bionic64 - inicializa com essa imagem
+	vagrant up - cria a maquina
+	vagrant ssh - acessa a instacia criada
+	vagrant destroy - destroi a instancia
+	vagrant reload - reinicia a instacia com a nova configuracao
+	
+comandos 
+	curl localhost:80 - retorna o home
+	tail -f /var/log/nginx/access.log - tail no log do nginx
